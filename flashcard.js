@@ -1,44 +1,45 @@
 var userInput = process.argv[2];
 
 function BasicCard(front, back){
-	this.statement = statement;
-	this.answer = answer;
+	this.front = front;
+	this.back = back;
 }
 
-function ClozeCard(text, cloze){
+function ClozeCard(text, cloze, partial){
 	this.text = text;
 	this.cloze = cloze;
+	this.partial = partial;
 }
   
 
 var firstPresident = new BasicCard(
     "Who was the first president of the United States?", "George Washington");
 
-BasicCard.prototype.printFont = function(){
-console.log(firstPresident.front);
-}
- 
+if(userInput === 'front'){
+	console.log(firstPresident.front);
 
-BasicCard.prototype.printBack = function(){
-	console.log(firstPresident.back); 
 }
+
+if(userInput === 'back'){
+		console.log(firstPresident.back); 
+}
+
 
 var firstPresidentCloze = new ClozeCard(
-    "George Washington was the first president of the United States.", "George Washington");
+    "George Washington was the first president of the United States.", "George Washington",'_______was the first president of the United States.');
 
-BasicCard.prototype.printCloze = function(){
-	console.log(firstPresidentCloze.cloze); 
+if(userInput === 'cloze'){
+		console.log(firstPresidentCloze.cloze); 
+
 }
 
 
-BasicCard.prototype.printPartial = function(){
+if(userInput === 'partial'){
 	console.log(firstPresidentCloze.partial);
 }
+
  
-BasicCard.prototype.printFullText = function(){
-	console.log(firstPresidentCloze.fullText): 
+if(userInput === 'fullText'){
+	console.log(firstPresidentCloze.fullText);
 }
 
-
-// Should throw or log an error because "oops" doesn't appear in "This doesn't work"
-var brokenCloze("This doesn't work", "oops"); 
